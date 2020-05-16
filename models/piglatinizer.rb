@@ -4,27 +4,15 @@ class PigLatinizer
 def piglatinize(s)
   arr=[]
   s.split(' ').each do |i|
-   if i.length > 1
-     if vowel(i[1]) && consonant(i)
-       arr << (i[1..-1]+i[0]+"ay")
-     end
-     if consonant(i[0]) && consonant(i[1])  && consonant(i[2])
-         arr << (i[3..-1]+i[0]+i[1]+i[2]+"ay")
-     elsif consonant(i[0]) &&  consonant(i[1])
-         arr << (i[2..-1]+i[0]+i[1]+"ay")
-     end
-     if vowel(i[0])
-        arr << (i+"way")
-      end
-   end
+    vowel_index = i.index(/[aAeEiIoOuU]/)
+  if vowel(i)
+       arr << (i+"way")
+  else
 
-if i.length ==1
- if consonant(i[0])
-      arr << (i[0]+"ay")
- elsif  vowel(i[0])
-      arr << (i+"way")
-  end
-end
+     cons=i.slice(0..vowel_index-1)
+       arr << (i[vowel_index..-1]+cons+"ay")
+
+   end
 
 end
   arr.join(' ')
