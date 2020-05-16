@@ -5,31 +5,37 @@ def piglatinize(s)
   arr=[]
   s.split(' ').each do |i|
    if i.length > 1
-     if i[1].downcase.start_with?(/[aeoui]/) && i[0].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
+     if vowel(i[1]) && consonant(i)
        arr << (i[1..-1]+i[0]+"ay")
      end
-
-     if i[0].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/) &&  i[1].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/) && i[2].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
+     if consonant(i[0]) && consonant(i[1])  && consonant(i[2])
          arr << (i[3..-1]+i[0]+i[1]+i[2]+"ay")
-     elsif i[0].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/) &&  i[1].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
+     elsif consonant(i[0]) &&  consonant(i[1])
          arr << (i[2..-1]+i[0]+i[1]+"ay")
      end
-     if i[0].downcase.start_with?(/[aeoui]/)
+     if vowel(i[0])
         arr << (i+"way")
       end
    end
 
 if i.length ==1
- if i[0].downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
+ if consonant(i[0])
       arr << (i[0]+"ay")
- elsif  i[0].downcase.start_with?(/[aeoui]/)
+ elsif  vowel(i[0])
       arr << (i+"way")
- end
+  end
 end
 
 end
   arr.join(' ')
 end
 
+end
 
+def vowel(i)
+  i.downcase.start_with?(/[aeoui]/)
+end
+
+def consonant(i)
+  i.downcase.start_with?(/[bcdfghjklmnpqrstvwxyz]/)
 end
