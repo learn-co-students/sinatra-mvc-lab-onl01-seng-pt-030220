@@ -6,7 +6,7 @@ def piglatinize(s)
   s.split(' ').each do |i|
    if i.length > 1
      if vowel(i[1]) && consonant(i)
-       arr << (i[vowel(i)..-1]+i[0]+"ay")
+       arr << (i[1..-1]+i[0]+"ay")
      end
      if consonant(i[0]) && consonant(i[1])  && consonant(i[2])
          arr << (i[3..-1]+i[0]+i[1]+i[2]+"ay")
