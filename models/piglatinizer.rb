@@ -1,28 +1,19 @@
 class PigLatinizer
 
-	def initialize(text)
-		@original_text = text.downcase
+	def piglatinize(text)
+		@original_text = text
 		@words = @original_text.split(' ')
-		pig_latinize
-		@pig_latin = @words.join(' ')
-	end
-
-	def pig_latinize
 		@words = @words.map do |word|
-			if word.index(/[aeiou]/) == 0
+			if word.index(/[aeiouAEIOU]/) == 0
 				word += 'w'
 			end
-			while word.index(/[aeiou]/) != 0
+			while word.index(/[aeiouAEIOU]/) != 0
 				character = word[0]
 				word = word[1..-1] + character
 			end
 			word += 'ay'
 		end
+		@pig_latin = @words.join(' ')
 	end
 
-	def to_s
-		@pig_latin
-	end
 end
-
-puts PigLatinizer.new('Example')
