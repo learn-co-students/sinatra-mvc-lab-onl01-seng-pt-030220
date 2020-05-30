@@ -4,7 +4,7 @@ class PigLatinizer
 
     phrase.split(" ").map do |word|
             
-        first_letter = word[0].downcase
+    first_letter = word[0].downcase
 
     if ["a", "e", "i", "o", "u"].include?(first_letter)
         word + "way"
@@ -22,8 +22,6 @@ class PigLatinizer
     end
 
         end.join(" ")
-        
-    
     end
 end
 
