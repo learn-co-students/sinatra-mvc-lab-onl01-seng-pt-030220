@@ -4,35 +4,117 @@ class PigLatinizer
     def initialize(words)
         @words = words
     end
-#!=====================================================================brainstorm,bb♥
-    - find pattern on wikipedia and specs and outline it
-    - sample phrase, break it down, convert into usable datatype - ARRAY
-    - use .map to create array
-    - downcase it
-    -break down each downcased word and break it up into letters
-    -mix and match suffixes and prefixes - PATTERN IT
-    -bring those new words together - join into a string
 
-PATTERN IS:
- if word begins with
-    vowel = ["a", "e", "i", "o", "u"]
-    + "WAY" to end   <----   aWAY andWAY
+
+
+
+    @big_array_of_pig_latin_words = []
+    @user_phrase = "Once upon a time"
     
+    def downcase_string
+      @downcased_string = @user_phrase.downcase
+    end
+    
+    def split_downcased_string
+      @split_string = @downcased_string.split(" ")
+    end
+    
+    def split_elements_into_letters
+      @word_letters_array = @split_string.map{|word| word.split("")}
+    end
+    
+    def iterate_into_piggy_talk
+      @word_letters_array.each do |word_letters_element|
+        do_the_pig_latin(word_letters_element)    
+      end
+    end
+    
+    
+    def do_the_pig_latin(argument) #<-------HAND IN ["a", "b", "c"]
+      pig_werd = []
+    
+      word_letters = argument
+    
+      vowels = ["a", "e", "i", "o", "u"]
+      consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+    
+    
+      if vowels.include?(word_letters[0]) && !vowels.include?(word_letters[1])
+        word_letters << "way"
+        werd = word_letters.join
+        
+        pig_werd << werd
+        
+    
+      elsif consonants.include?(word_letters[0]) && !consonants.include?(word_letters[1])
+        rip = word_letters.shift
+        word_letters.push(rip)
+        word_letters << "ay"
+        werd = word_letters.join
+        
+        pig_werd << werd
+    
+    
+      elsif consonants.include?(word_letters[0]) && consonants.include?(word_letters[1]) && !consonants.include?(word_letters[2])
+        rip = word_letters.shift(2)
+        word_letters.push(rip)
+        word_letters << "ay"
+        werd = word_letters.join
+        
+        pig_werd << werd
+    
+    
+      elsif consonants.include?(word_letters[0]) && consonants.include?(word_letters[1]) && consonants.include?(word_letters[2]) && !consonants.include?(word_letters[3])
+        rip = word_letters.shift(3)
+        word_letters.push(rip)
+        word_letters << "ay"
+        werd = word_letters.join
+        
+        pig_werd << werd
+    
+    
+      else
+        puts "NEEDS MORE LETTERS DEFINED IN IF-ELSE STATEMENT, bb♥"
+    
+      end
+    
+        @big_array_of_pig_latin_words << pig_werd
+    
+    end #<---methodEND
+    
+    def join_it_up
+      @new_phrase = @big_array_of_pig_latin_words.join(" ")
+    end
+    
+    def method_that_brings_it_all_together
+        downcase_string
+        split_downcased_string
+        split_elements_into_letters
+        iterate_into_piggy_talk
+        join_it_up
+        puts @new_phrase
+      end
+      
 
-if word begins with 
-    consonant = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "z"]
-    move consonant to end of word + "AY"
-end
-
-if word begins with 
-    consonant_cluster = consonant + consonant + consonant + vowel
-                        consonant + consonant + vowel
-
-   
-end
 
 
-consonant + consonant + consonant + vowel   <-----move ccc to end + 'ay'        
-consonant + consonant + vowel               <-----move cc to end
-consonant + vowel                           <-----move c to end
-vowel                                       <-----at end + 'way'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end #<----classEND   
