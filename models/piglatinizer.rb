@@ -1,15 +1,20 @@
 class PigLatinizer
-    attr_accessor :words
+    attr_accessor :user_phrase, :new_phrase
+    
+    
+    def initialize(user_phrase)
+        @user_phrase = user_phrase
+        @big_array_of_pig_latin_words = [] #!<---I DONT REALLY KNOW WHERE TO PUT THIS..random to set it here..
+        method_that_brings_it_all_together
 
-    def initialize(words)
-        @words = words
+        #! SHOULD I TRETURN SOMETHING HERE???
     end
 
 
 
 
-    @big_array_of_pig_latin_words = []
-    @user_phrase = "Once upon a time"
+    
+    
     
     def downcase_string
       @downcased_string = @user_phrase.downcase
@@ -74,10 +79,10 @@ class PigLatinizer
     
     
       else
-        puts "NEEDS MORE LETTERS DEFINED IN IF-ELSE STATEMENT, bb♥"
+        puts "ERROR ERROR BLEEP BLOOP : I live in ELSE of IF STATEMENT in DO_THE_PIG_LATIN"
     
       end
-    
+
         @big_array_of_pig_latin_words << pig_werd
     
     end #<---methodEND
@@ -92,7 +97,7 @@ class PigLatinizer
         split_elements_into_letters
         iterate_into_piggy_talk
         join_it_up
-        puts @new_phrase
+        # @new_phrase #! I AM NOT SURE HOW THIS METHOD SHOULD RETURN FOR THE CONTROLLER
       end
       
 
