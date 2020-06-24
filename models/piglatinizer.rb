@@ -2,10 +2,13 @@ class PigLatinizer
     attr_accessor :user_phrase, :new_phrase
     
     
-    def initialize(user_phrase)
-        @user_phrase = user_phrase
-        @big_array_of_pig_latin_words = [] #!<---I DONT REALLY KNOW WHERE TO PUT THIS..random to set it here..
-        method_that_brings_it_all_together
+    def initialize#(user_phrase)
+
+
+
+        # @user_phrase = user_phrase
+        # @big_array_of_pig_latin_words = [] #!<---I DONT REALLY KNOW WHERE TO PUT THIS..random to set it here..
+        # method_that_brings_it_all_together
 
         #! SHOULD I TRETURN SOMETHING HERE???
     end
@@ -13,7 +16,7 @@ class PigLatinizer
 
 
 
-    
+    #############################################################my original code
     
     
     def downcase_string
@@ -35,7 +38,12 @@ class PigLatinizer
     end
     
     
-    def do_the_pig_latin(argument) #<-------HAND IN ["a", "b", "c"]
+    def do_the_pig_latin()
+       
+      
+      
+      
+         argument #<-------HAND IN ["a", "b", "c"]
       pig_werd = []
     
       word_letters = argument
@@ -103,7 +111,17 @@ class PigLatinizer
 
 
 
+def piglatinize(argument)
+  
 
+  def split_elements_into_letters
+    @word_letters_array = @split_string.map{|word| word.split("")}
+  end
+
+  do_the_pig_latin
+
+
+end
 
 
 
